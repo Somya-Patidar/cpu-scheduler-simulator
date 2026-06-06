@@ -1,12 +1,7 @@
 # CPU Scheduler Simulator
 
 > An interactive, visual simulator for CPU scheduling algorithms — built with React + Vite, deployed on Vercel/Netlify.
-
-![CPU Scheduler Simulator](https://img.shields.io/badge/React-18-61dafb?logo=react&logoColor=white)
-![Vite](https://img.shields.io/badge/Vite-5-646cff?logo=vite&logoColor=white)
-![License](https://img.shields.io/badge/license-MIT-green)
-![Deployment](https://img.shields.io/badge/Deploy-Vercel%20%7C%20Netlify-black)
-
+> **Live:** [Try it on Vercel](https://cpu-scheduler-simulator-alpha.vercel.app/)
 ---
 
 ## Overview
@@ -23,11 +18,11 @@ CPU Scheduler Simulator is a fully client-side web application that visualizes h
 
 | Dark Mode | Light Mode |
 |-----------|------------|
-| `screenshots/dark-dashboard.png` | `screenshots/light-dashboard.png` |
+| ![Dashboard](screenshots/dashboard_1.png) |![Dashboard](screenshots/dashboard_2.png) |
 
 | Gantt Chart | Process Table |
-|-------------|---------------|
-| `screenshots/gantt.png` | `screenshots/table.png` |
+|-----------|-----------|
+| ![Gantt Chart](screenshots/gantt_chart.png) | ![Metrics](screenshots/process.png) |
 
 ---
 
@@ -128,10 +123,6 @@ Preemptive version. When a higher-priority process arrives, it immediately preem
 
 ## Installation & Local Setup
 
-### Prerequisites
-- Node.js ≥ 18.x
-- npm ≥ 9.x (or pnpm/yarn)
-
 ### Steps
 
 ```bash
@@ -155,67 +146,6 @@ npm run preview
 
 ---
 
-## Usage Guide
-
-1. **Select Algorithm** — Click an algorithm in the left panel. The active selection is highlighted.
-2. **Set Time Quantum** (Round Robin only) — Use the +/− controls or type directly.
-3. **Configure Processes** — Edit PID, Arrival Time, Burst Time (and Priority for priority algorithms).
-4. **Load a Preset** — Click Basic / Burst / Simultaneous to load example process sets.
-5. **Click Simulate** — Results appear instantly: metrics tiles, Gantt chart, table, and bar chart.
-6. **Sort the table** — Click any column header to sort ascending/descending.
-7. **Toggle Theme** — Click the Dark/Light button in the top-right corner.
-
----
-
-## Deployment
-
-### Vercel (Recommended)
-
-```bash
-# Install Vercel CLI
-npm i -g vercel
-
-# Deploy from project root
-vercel
-
-# Follow prompts:
-# - Framework: Vite
-# - Build command: npm run build
-# - Output directory: dist
-```
-
-Or connect your GitHub repo at [vercel.com](https://vercel.com) → New Project → Import from GitHub.
-
-### Netlify
-
-```bash
-# Install Netlify CLI
-npm i -g netlify-cli
-
-# Build and deploy
-npm run build
-netlify deploy --prod --dir=dist
-```
-
-Or drag-and-drop the `dist/` folder at [app.netlify.com/drop](https://app.netlify.com/drop).
-
----
-
-## Git Setup
-
-```bash
-# Initialize repository
-git init
-git add .
-git commit -m "feat: initial CPU scheduler simulator"
-
-# Add remote and push
-git remote add origin https://github.com/<your-username>/cpu-scheduler-sim.git
-git branch -M main
-git push -u origin main
-```
-
----
 
 ## Future Enhancements
 
@@ -229,26 +159,9 @@ git push -u origin main
 - [ ] **Unit tests** with Vitest
 
 ---
-
-## Resume Description
-
-> **CPU Scheduling Algorithm Visualizer** | React, Vite, JavaScript
->
-> Built an interactive web simulator implementing 6 CPU scheduling algorithms (FCFS, SJF, SRTF, Round Robin, Priority Preemptive/Non-Preemptive) from scratch without external chart libraries. Engineered a real-time Gantt chart renderer, sortable process metrics table, and aggregate performance statistics dashboard. Implemented persistent dark/light theming, input validation, and responsive layout. Deployed on Vercel.
+## If the live demo is down You can still run it locally in under 2 minutes using the setup steps above.
 
 ---
 
-## Skills Demonstrated
+*Built by Somya — feel free to reach out at [somyapatidar510@gmail.com](mailto:somyapatidar510@gmail.com) or connect on [LinkedIn](https://www.linkedin.com/in/somya-patidar2004/)*
 
-- **Data Structures & Algorithms** — priority queues, simulation loops, greedy scheduling
-- **Operating Systems** — deep understanding of CPU scheduling theory
-- **React** — hooks (useState, useCallback, useEffect, useRef), component architecture
-- **CSS** — custom design system with CSS variables, responsive grid, dark/light theming
-- **Software Engineering** — separation of concerns (algorithm logic vs UI), reusable components
-- **Deployment** — Vite build pipeline, Vercel/Netlify CI/CD
-
----
-
-## License
-
-MIT © 2024 — Feel free to use, modify, and distribute.
