@@ -14,8 +14,6 @@ CPU Scheduler Simulator is a fully client-side web application that visualizes h
 
 ## Screenshots
 
-> _Add screenshots here after first run_
-
 | Dark Mode | Light Mode |
 |-----------|------------|
 | ![Dashboard](screenshots/dashboard_1.png) |![Dashboard](screenshots/dashboard_2.png) |
