@@ -1,0 +1,58 @@
+.table-card { padding: 1.25rem; }
+
+.sortable-th {
+  cursor: pointer;
+  user-select: none;
+}
+
+.sortable-th:hover {
+  color: var(--text-primary);
+  background: var(--bg-overlay);
+}
+
+.sort-icon {
+  margin-left: 0.3rem;
+  opacity: 0.35;
+  font-size: 0.65rem;
+  transition: opacity var(--transition);
+}
+
+.sort-icon.active {
+  opacity: 1;
+  color: var(--accent-blue);
+}
+
+.pid-display {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.pid-color-bar {
+  width: 3px;
+  height: 18px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.pid-text {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.875rem;
+}
+
+.num-cell {
+  font-family: var(--font-mono);
+  text-align: right;
+  color: var(--text-secondary);
+}
+
+.highlight-tat {
+  color: var(--accent-violet);
+  font-weight: 500;
+}
+
+.highlight-wt {
+  color: var(--accent-amber);
+  font-weight: 500;
+}

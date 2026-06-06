@@ -1,0 +1,79 @@
+.barchart-card { padding: 1.25rem; }
+
+.bc-legend {
+  margin-left: auto;
+  display: flex;
+  gap: 0.875rem;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  text-transform: none;
+}
+
+.bc-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--text-secondary);
+}
+
+.bc-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+}
+
+.wt-color  { background: var(--accent-amber); }
+.tat-color { background: var(--accent-violet); }
+
+.barchart-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+}
+
+.bc-row {
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+}
+
+.bc-pid {
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  font-weight: 700;
+  width: 28px;
+  flex-shrink: 0;
+}
+
+.bc-bars {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.bc-bar-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  height: 12px;
+}
+
+.bc-bar {
+  height: 100%;
+  border-radius: 2px;
+  min-width: 2px;
+  transition: width 0.5s ease;
+}
+
+.wt-bar  { background: var(--accent-amber);  opacity: 0.85; }
+.tat-bar { background: var(--accent-violet); opacity: 0.85; }
+
+.bc-bar-label {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+}

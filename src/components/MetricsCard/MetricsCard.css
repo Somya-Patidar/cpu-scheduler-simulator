@@ -1,0 +1,89 @@
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+
+@media (max-width: 1100px) {
+  .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 560px) {
+  .metrics-grid { grid-template-columns: 1fr; }
+}
+
+.metric-tile {
+  padding: 1.125rem 1.25rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.875rem;
+  position: relative;
+  overflow: hidden;
+  border-top: 2px solid var(--tile-color);
+}
+
+.metric-tile::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 40px;
+  background: linear-gradient(180deg, color-mix(in srgb, var(--tile-color) 8%, transparent), transparent);
+  pointer-events: none;
+}
+
+.metric-icon {
+  color: var(--tile-color);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.metric-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.metric-value {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  line-height: 1;
+  display: flex;
+  align-items: baseline;
+  gap: 0.25rem;
+}
+
+.metric-unit {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+.metric-label {
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-top: 0.375rem;
+}
+
+/* CPU Utilization bar */
+.cpu-bar-wrap {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--bg-raised);
+}
+
+.cpu-bar-fill {
+  height: 100%;
+  background: var(--tile-color);
+  border-radius: 0 2px 2px 0;
+  transition: width 0.6s ease;
+}
