@@ -11,7 +11,7 @@ export default function Header({ theme, onToggleTheme }) {
               <rect x="2" y="10" width="5" height="8" rx="1" fill="var(--accent-blue)" opacity="0.9"/>
               <rect x="10" y="6" width="5" height="16" rx="1" fill="var(--accent-violet)" opacity="0.9"/>
               <rect x="18" y="12" width="5" height="10" rx="1" fill="var(--accent-emerald)" opacity="0.9"/>
-              <rect x="2" y="20" width="21" height="1.5" rx="0.75" fill="var(--text-muted)" opacity="0.4"/>
+              <rect x="2" y="25" width="21" height="1.5" rx="0.75" fill="var(--text-muted)" opacity="0.4"/>
             </svg>
           </div>
           <div>
