@@ -21,7 +21,6 @@ export default function Header({ theme, onToggleTheme }) {
         </div>
 
         <div className="header-right">
-          <span className="header-tag">v1.0</span>
           <button
             className="theme-toggle"
             onClick={onToggleTheme}

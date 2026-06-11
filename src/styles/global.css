@@ -1,7 +1,7 @@
 /* ═══════════════════════════════════════════════════
    CPU Scheduler Simulator — Global Styles
    Font: Syne (headings) + JetBrains Mono (mono/data)
-   ═══════════════════════════════════════════════════ */
+   */
 
 *, *::before, *::after {
   box-sizing: border-box;
