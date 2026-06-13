@@ -44,10 +44,10 @@
 }
 
 .metric-value {
-  font-family: var(--font-display);
+  font-family: var(--font-head);
   font-size: 1.5rem;
   font-weight: 800;
-  color: var(--text-primary);
+  color: var(--text);
   line-height: 1;
   display: flex;
   align-items: baseline;
@@ -57,28 +57,27 @@
 .metric-unit {
   font-family: var(--font-mono);
   font-size: 0.65rem;
-  color: var(--text-muted);
+  color: var(--text-dim);
   font-weight: 400;
 }
 
 .metric-label {
-  font-family: var(--font-display);
+  font-family: var(--font-head);
   font-size: 0.7rem;
   font-weight: 600;
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  color: var(--text-muted);
+  color: var(--text-dim);
   margin-top: 0.375rem;
 }
 
-/* CPU Utilization bar */
 .cpu-bar-wrap {
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
   height: 3px;
-  background: var(--bg-raised);
+  background: var(--bg-light);
 }
 
 .cpu-bar-fill {

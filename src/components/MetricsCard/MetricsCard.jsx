@@ -1,12 +1,12 @@
 import React from 'react'
 import './MetricsCard.css'
 
-const STAT_CONFIG = [
+const statList = [
   {
     key: 'avgWT',
     label: 'Avg Waiting Time',
     unit: 'units',
-    color: '--accent-amber',
+    color: '--yellow',
     icon: (
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
         <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
@@ -17,7 +17,7 @@ const STAT_CONFIG = [
     key: 'avgTAT',
     label: 'Avg Turnaround Time',
     unit: 'units',
-    color: '--accent-violet',
+    color: '--violet',
     icon: (
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
         <polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/>
@@ -29,7 +29,7 @@ const STAT_CONFIG = [
     key: 'cpuUtilization',
     label: 'CPU Utilization',
     unit: '%',
-    color: '--accent-emerald',
+    color: '--green',
     icon: (
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
         <rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>
@@ -40,7 +40,7 @@ const STAT_CONFIG = [
     key: 'throughput',
     label: 'Throughput',
     unit: 'proc/unit',
-    color: '--accent-blue',
+    color: '--blue',
     icon: (
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
         <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
@@ -49,34 +49,31 @@ const STAT_CONFIG = [
   },
 ]
 
+// throughput needs more decimal places since it's usually a small fraction
+function formatStat(key, value) {
+  if (key === 'throughput') return value.toFixed(4)
+  if (key === 'cpuUtilization') return value.toFixed(1)
+  return value.toFixed(2)
+}
+
 export default function MetricsCard({ stats }) {
   return (
     <div className="metrics-grid animate-in">
-      {STAT_CONFIG.map((cfg) => {
-        const raw = stats[cfg.key]
-        const formatted =
-          cfg.key === 'throughput'
-            ? raw.toFixed(4)
-            : cfg.key === 'cpuUtilization'
-            ? raw.toFixed(1)
-            : raw.toFixed(2)
-
+      {statList.map((s) => {
+        const value = stats[s.key]
         return (
-          <div key={cfg.key} className="metric-tile card" style={{ '--tile-color': `var(${cfg.color})` }}>
-            <div className="metric-icon">{cfg.icon}</div>
+          <div key={s.key} className="metric-tile card" style={{ '--tile-color': `var(${s.color})` }}>
+            <div className="metric-icon">{s.icon}</div>
             <div className="metric-body">
               <div className="metric-value">
-                {formatted}
-                <span className="metric-unit">{cfg.unit}</span>
+                {formatStat(s.key, value)}
+                <span className="metric-unit">{s.unit}</span>
               </div>
-              <div className="metric-label">{cfg.label}</div>
+              <div className="metric-label">{s.label}</div>
             </div>
-            {cfg.key === 'cpuUtilization' && (
+            {s.key === 'cpuUtilization' && (
               <div className="cpu-bar-wrap">
-                <div
-                  className="cpu-bar-fill"
-                  style={{ width: `${Math.min(raw, 100)}%` }}
-                />
+                <div className="cpu-bar-fill" style={{ width: `${Math.min(value, 100)}%` }} />
               </div>
             )}
           </div>

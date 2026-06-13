@@ -15,7 +15,7 @@
   gap: 0.3rem;
   font-family: var(--font-mono);
   font-size: 0.7rem;
-  color: var(--text-secondary);
+  color: var(--text2);
 }
 
 .bc-dot {
@@ -24,8 +24,8 @@
   border-radius: 2px;
 }
 
-.wt-color  { background: var(--accent-amber); }
-.tat-color { background: var(--accent-violet); }
+.wt-color  { background: var(--yellow); }
+.tat-color { background: var(--violet); }
 
 .barchart-body {
   display: flex;
@@ -40,7 +40,7 @@
 }
 
 .bc-pid {
-  font-family: var(--font-display);
+  font-family: var(--font-head);
   font-size: 0.78rem;
   font-weight: 700;
   width: 28px;
@@ -68,12 +68,12 @@
   transition: width 0.5s ease;
 }
 
-.wt-bar  { background: var(--accent-amber);  opacity: 0.85; }
-.tat-bar { background: var(--accent-violet); opacity: 0.85; }
+.wt-bar  { background: var(--yellow); opacity: 0.85; }
+.tat-bar { background: var(--violet); opacity: 0.85; }
 
 .bc-bar-label {
   font-family: var(--font-mono);
   font-size: 0.62rem;
-  color: var(--text-muted);
+  color: var(--text-dim);
   white-space: nowrap;
 }

@@ -1,19 +1,19 @@
 import React, { useRef, useEffect } from 'react'
 import './GanttChart.css'
 
-const COLORS = [
+const colors = [
   '#38bdf8','#818cf8','#34d399','#fbbf24','#fb7185',
   '#c084fc','#22d3ee','#a3e635','#f472b6','#fd8a5e',
 ]
 
-/** Build a consistent color map from pid → color */
-function buildColorMap(gantt) {
+// gives each process a consistent color based on order of first appearance
+function getColorMap(gantt) {
   const map = {}
-  let idx = 0
+  let i = 0
   for (const seg of gantt) {
     if (seg.pid !== 'IDLE' && !(seg.pid in map)) {
-      map[seg.pid] = COLORS[idx % COLORS.length]
-      idx++
+      map[seg.pid] = colors[i % colors.length]
+      i++
     }
   }
   return map
@@ -22,20 +22,17 @@ function buildColorMap(gantt) {
 export default function GanttChart({ gantt }) {
   const scrollRef = useRef(null)
 
-  const totalTime = gantt.length > 0 ? gantt[gantt.length - 1].end : 0
-  const colorMap = buildColorMap(gantt)
-
-  // Auto-scroll to show full chart on update
-  useEffect(() => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollLeft = 0
-    }
-  }, [gantt])
-
   if (!gantt || gantt.length === 0) return null
 
-  const MIN_SEG_WIDTH = 48
-  const scale = Math.max(MIN_SEG_WIDTH, 700 / totalTime) // px per time unit
+  const totalTime = gantt[gantt.length - 1].end
+  const colorMap = getColorMap(gantt)
+
+  useEffect(() => {
+    if (scrollRef.current) scrollRef.current.scrollLeft = 0
+  }, [gantt])
+
+  const minSegWidth = 48
+  const scale = Math.max(minSegWidth, 700 / totalTime)
 
   return (
     <div className="card gantt-card animate-in">
@@ -61,34 +58,25 @@ export default function GanttChart({ gantt }) {
               >
                 <div className="gantt-seg-inner">
                   <span className="gantt-pid">{seg.pid}</span>
-                  {w >= 40 && (
-                    <span className="gantt-duration">{seg.end - seg.start}u</span>
-                  )}
+                  {w >= 40 && <span className="gantt-duration">{seg.end - seg.start}u</span>}
                 </div>
               </div>
             )
           })}
         </div>
 
-        {/* Timeline ticks */}
         <div className="gantt-timeline" style={{ width: totalTime * scale + 'px' }}>
           {gantt.map((seg, i) => (
-            <div
-              key={`tick-s-${i}`}
-              className="gantt-tick"
-              style={{ left: seg.start * scale + 'px' }}
-            >
+            <div key={`tick-s-${i}`} className="gantt-tick" style={{ left: seg.start * scale + 'px' }}>
               <span className="gantt-tick-label">{seg.start}</span>
             </div>
           ))}
-          {/* Final tick */}
           <div className="gantt-tick" style={{ left: totalTime * scale + 'px' }}>
             <span className="gantt-tick-label">{totalTime}</span>
           </div>
         </div>
       </div>
 
-      {/* Legend */}
       <div className="gantt-legend">
         {Object.entries(colorMap).map(([pid, color]) => (
           <div key={pid} className="legend-item">

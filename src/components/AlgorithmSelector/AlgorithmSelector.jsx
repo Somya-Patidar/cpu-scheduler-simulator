@@ -3,7 +3,7 @@ import { ALGORITHMS } from '../../hooks/useScheduler'
 import './AlgorithmSelector.css'
 
 export default function AlgorithmSelector({ algorithm, setAlgorithm, quantum, setQuantum }) {
-  const current = ALGORITHMS.find((a) => a.id === algorithm)
+  const selected = ALGORITHMS.find((a) => a.id === algorithm)
 
   return (
     <div className="card algo-card">
@@ -22,7 +22,7 @@ export default function AlgorithmSelector({ algorithm, setAlgorithm, quantum, se
         ))}
       </div>
 
-      {current?.needsQuantum && (
+      {selected?.needsQuantum && (
         <div className="quantum-row">
           <label className="quantum-label" htmlFor="quantum-input">
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -46,7 +46,7 @@ export default function AlgorithmSelector({ algorithm, setAlgorithm, quantum, se
         </div>
       )}
 
-      {current?.needsPriority && (
+      {selected?.needsPriority && (
         <div className="priority-note">
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
             <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>

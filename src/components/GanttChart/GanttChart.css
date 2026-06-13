@@ -4,7 +4,7 @@
   margin-left: auto;
   font-family: var(--font-mono);
   font-size: 0.7rem;
-  color: var(--text-muted);
+  color: var(--text-dim);
   font-weight: 400;
   letter-spacing: 0.04em;
   text-transform: none;
@@ -20,7 +20,7 @@
   display: flex;
   height: 54px;
   min-width: 100%;
-  border-radius: var(--radius-sm);
+  border-radius: 6px;
   overflow: hidden;
   border: 1px solid var(--border);
 }
@@ -28,8 +28,8 @@
 .gantt-seg {
   position: relative;
   height: 100%;
-  background: color-mix(in srgb, var(--seg-color) 18%, var(--bg-raised));
-  border-right: 1px solid var(--bg-base);
+  background: color-mix(in srgb, var(--seg-color) 18%, var(--bg-light));
+  border-right: 1px solid var(--bg);
   cursor: default;
   transition: filter 0.15s;
   border-left: 3px solid var(--seg-color);
@@ -65,10 +65,10 @@
 }
 
 .gantt-pid {
-  font-family: var(--font-display);
+  font-family: var(--font-head);
   font-size: 0.78rem;
   font-weight: 700;
-  color: var(--seg-color, var(--text-muted));
+  color: var(--seg-color, var(--text-dim));
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -76,18 +76,17 @@
 }
 
 .gantt-seg.idle .gantt-pid {
-  color: var(--text-muted);
+  color: var(--text-dim);
   font-size: 0.65rem;
 }
 
 .gantt-duration {
   font-family: var(--font-mono);
   font-size: 0.58rem;
-  color: var(--text-muted);
+  color: var(--text-dim);
   white-space: nowrap;
 }
 
-/* Timeline */
 .gantt-timeline {
   position: relative;
   height: 24px;
@@ -108,19 +107,18 @@
   display: block;
   width: 1px;
   height: 6px;
-  background: var(--border-bright);
+  background: var(--border2);
 }
 
 .gantt-tick-label {
   font-family: var(--font-mono);
   font-size: 0.6rem;
-  color: var(--text-muted);
+  color: var(--text-dim);
   margin-top: 2px;
   transform: translateX(-50%);
   white-space: nowrap;
 }
 
-/* Legend */
 .gantt-legend {
   display: flex;
   flex-wrap: wrap;
@@ -135,7 +133,7 @@
   align-items: center;
   gap: 0.375rem;
   font-size: 0.75rem;
-  color: var(--text-secondary);
+  color: var(--text2);
   font-family: var(--font-mono);
 }
 
@@ -152,5 +150,5 @@
     var(--border) 0, var(--border) 2px,
     transparent 2px, transparent 5px
   );
-  border: 1px solid var(--border-bright);
+  border: 1px solid var(--border2);
 }

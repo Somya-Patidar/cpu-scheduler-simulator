@@ -27,7 +27,6 @@ export default function App() {
       <Header theme={theme} onToggleTheme={toggleTheme} />
 
       <main className="main-content">
-        {/* Hero line */}
         <div className="hero-row">
           <div>
             <h2 className="hero-title">Scheduling Simulator</h2>
@@ -40,9 +39,7 @@ export default function App() {
           </div>
         </div>
 
-        {/* Main layout */}
         <div className="panel-grid">
-          {/* Left column: config */}
           <div className="config-col">
             <AlgorithmSelector
               algorithm={algorithm}
@@ -60,9 +57,7 @@ export default function App() {
             />
           </div>
 
-          {/* Right column: results */}
           <div className="results-col">
-            {/* Error state */}
             {error && (
               <div className="error-banner animate-in">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -74,16 +69,15 @@ export default function App() {
               </div>
             )}
 
-            {/* Empty state */}
             {!result && !error && (
               <div className="empty-state">
                 <div className="empty-icon">
                   <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
-                    <rect x="4" y="20" width="8" height="16" rx="2" fill="var(--accent-blue)" opacity="0.3"/>
-                    <rect x="16" y="12" width="8" height="24" rx="2" fill="var(--accent-violet)" opacity="0.3"/>
-                    <rect x="28" y="24" width="8" height="12" rx="2" fill="var(--accent-emerald)" opacity="0.3"/>
-                    <rect x="40" y="16" width="4" height="20" rx="2" fill="var(--accent-amber)" opacity="0.3"/>
-                    <line x1="4" y1="38" x2="44" y2="38" stroke="var(--border-bright)" strokeWidth="1.5"/>
+                    <rect x="4" y="20" width="8" height="16" rx="2" fill="var(--blue)" opacity="0.3"/>
+                    <rect x="16" y="12" width="8" height="24" rx="2" fill="var(--violet)" opacity="0.3"/>
+                    <rect x="28" y="24" width="8" height="12" rx="2" fill="var(--green)" opacity="0.3"/>
+                    <rect x="40" y="16" width="4" height="20" rx="2" fill="var(--yellow)" opacity="0.3"/>
+                    <line x1="4" y1="38" x2="44" y2="38" stroke="var(--border2)" strokeWidth="1.5"/>
                   </svg>
                 </div>
                 <h3 className="empty-title">Ready to Simulate</h3>
@@ -94,7 +88,6 @@ export default function App() {
               </div>
             )}
 
-            {/* Results */}
             {result && (
               <>
                 <MetricsCard stats={result.stats} />

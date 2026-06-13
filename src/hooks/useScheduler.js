@@ -9,15 +9,15 @@ import {
 } from '../algorithms'
 
 export const ALGORITHMS = [
-  { id: 'fcfs',      label: 'FCFS',                    needsPriority: false, needsQuantum: false },
-  { id: 'sjf',       label: 'SJF (Non-Preemptive)',    needsPriority: false, needsQuantum: false },
-  { id: 'srtf',      label: 'SRTF (Preemptive SJF)',   needsPriority: false, needsQuantum: false },
-  { id: 'rr',        label: 'Round Robin',              needsPriority: false, needsQuantum: true  },
-  { id: 'pnp',       label: 'Priority (Non-Preemptive)', needsPriority: true, needsQuantum: false },
-  { id: 'pp',        label: 'Priority (Preemptive)',    needsPriority: true,  needsQuantum: false },
+  { id: 'fcfs', label: 'FCFS', needsPriority: false, needsQuantum: false },
+  { id: 'sjf', label: 'SJF (Non-Preemptive)', needsPriority: false, needsQuantum: false },
+  { id: 'srtf', label: 'SRTF (Preemptive SJF)', needsPriority: false, needsQuantum: false },
+  { id: 'rr', label: 'Round Robin', needsPriority: false, needsQuantum: true },
+  { id: 'pnp', label: 'Priority (Non-Preemptive)', needsPriority: true, needsQuantum: false },
+  { id: 'pp', label: 'Priority (Preemptive)', needsPriority: true, needsQuantum: false },
 ]
 
-const DEFAULT_PROCESSES = [
+const defaultProcesses = [
   { id: 1, pid: 'P1', arrivalTime: 0, burstTime: 6, priority: 2 },
   { id: 2, pid: 'P2', arrivalTime: 2, burstTime: 4, priority: 1 },
   { id: 3, pid: 'P3', arrivalTime: 4, burstTime: 2, priority: 3 },
@@ -25,24 +25,21 @@ const DEFAULT_PROCESSES = [
 ]
 
 export function useScheduler() {
-  const [processes, setProcesses] = useState(DEFAULT_PROCESSES)
+  const [processes, setProcesses] = useState(defaultProcesses)
   const [algorithm, setAlgorithm] = useState('fcfs')
   const [quantum, setQuantum] = useState(2)
   const [result, setResult] = useState(null)
   const [error, setError] = useState(null)
-  const [isRunning, setIsRunning] = useState(false)
 
   const currentAlgo = ALGORITHMS.find((a) => a.id === algorithm)
 
   const run = useCallback(() => {
     setError(null)
-    setIsRunning(true)
 
     try {
       if (processes.length === 0) throw new Error('Add at least one process.')
       if (processes.length > 10) throw new Error('Maximum 10 processes allowed.')
 
-      // Validate
       for (const p of processes) {
         if (!p.pid.trim()) throw new Error(`Process ID cannot be empty.`)
         if (p.arrivalTime < 0) throw new Error(`${p.pid}: Arrival time must be ≥ 0.`)
@@ -53,18 +50,18 @@ export function useScheduler() {
       if (currentAlgo.needsQuantum && quantum < 1)
         throw new Error('Time quantum must be ≥ 1.')
 
-      // Unique PIDs
+      // pids should be unique or the algorithms get confused
       const pids = processes.map((p) => p.pid)
       if (new Set(pids).size !== pids.length) throw new Error('Process IDs must be unique.')
 
       let res
       switch (algorithm) {
         case 'fcfs': res = fcfs(processes); break
-        case 'sjf':  res = sjfNonPreemptive(processes); break
+        case 'sjf': res = sjfNonPreemptive(processes); break
         case 'srtf': res = srtf(processes); break
-        case 'rr':   res = roundRobin(processes, quantum); break
-        case 'pnp':  res = priorityNonPreemptive(processes); break
-        case 'pp':   res = priorityPreemptive(processes); break
+        case 'rr': res = roundRobin(processes, quantum); break
+        case 'pnp': res = priorityNonPreemptive(processes); break
+        case 'pp': res = priorityPreemptive(processes); break
         default: throw new Error('Unknown algorithm.')
       }
 
@@ -72,8 +69,6 @@ export function useScheduler() {
     } catch (e) {
       setError(e.message)
       setResult(null)
-    } finally {
-      setIsRunning(false)
     }
   }, [processes, algorithm, quantum, currentAlgo])
 
@@ -86,7 +81,7 @@ export function useScheduler() {
     processes, setProcesses,
     algorithm, setAlgorithm,
     quantum, setQuantum,
-    result, error, isRunning,
+    result, error,
     currentAlgo,
     run, reset,
   }
